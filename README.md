@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>London Time Clock</title>
