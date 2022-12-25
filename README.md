@@ -1,4 +1,7 @@
 <html>
+header {
+  display: none;
+}
 <head>
   <title>London Time Clock</title>
   <style>
