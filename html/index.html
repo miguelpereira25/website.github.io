@@ -2,114 +2,165 @@
 <head>
   <title>Portugal Time Clock</title>
   <style>
-   
-body{
-  background: #444 url('https://goo.gl/yfKGK') repeat; }
-
-.clock{
-  width: 200px; height: 200px;
-  border-radius: 200px;
-  border: 15px solid #222;
-  box-shadow: 
-    9px 13px 20px rgba(0,0,0,.8),
-    0 0 4px #222,
-    0 -3px 122px #555 inset;
-background-image: -webkit-radial-gradient(center center, farthest-side circle, #ffffff 0%, #5c5c5c 100%);
-background-image: -moz-radial-gradient(center center, farthest-side circle, #ffffff 0%, #5c5c5c 100%);
-background-image: -ms-radial-gradient(center center, farthest-side circle, #ffffff 0%, #5c5c5c 100%);
-background-image: -o-radial-gradient(center center, farthest-side circle, #ffffff 0%, #5c5c5c 100%);
-background-image: radial-gradient(farthest-side circle at center center, #ffffff 0%, #5c5c5c 100%);
-  position: relative;
-  margin: 40px auto; }
-.clock:after{
-  content: "";
-  width: 12px; height: 12px;
-  border-radius: 10px;
-  background: #555;
-  display: block;
-  position: absolute;
-  left: 92px;
-  top: 97px; }
-.clock:before{
-  content: "";
-  width: 180px; height: 180px;
-  top: 6px;
-  left: 6px;
-  position: absolute;
-  border-radius: 180px;
-  border: 4px dotted #444; }
-
-.clock div{
-  position: absolute;
-  margin-left: 96px; }
-
-.sec{
-  height: 100px;
-  width: 4px;
-  top: 52px;
-  background: none;
-  box-shadow: 
-    0 -40px 0 1px #444,
-    0 1px 0 1px #444; 
-
-  -webkit-animation: 60s steps(60) tick infinite; 
-  -moz-animation: 60s steps(60) tick infinite; }
-
-.mns, .hrs{
-  height: 35px;
-  width: 5px;
-  top: 85px;
-  background: #962033; }
-
-.mns{
-  box-shadow: 
-    0 -30px #962033,
-    0 -60px #962033,
-    1px 0 7px #777,
-    1px -28px 7px #777,
-    1px -58px 7px #777;
-  
-  -webkit-transform: rotate(45deg);
-     -moz-transform: rotate(45deg);
-
-  -webkit-animation: 
-    3600s steps(60) tick infinite; 
-     -moz-animation: 
-    3600s steps(60) tick infinite; }
-
-.hrs{
-  box-shadow: 
-    0 -20px #962033,
-    0 -40px #962033,
-    1px 0 3px #777,
-    1px -19px 3px #777,
-    1px -38px 3px #777;  
-  -webkit-transform: rotate(-45deg);
-     -moz-transform: rotate(-45deg);
-  
-  -webkit-animation: 
-    43200s linear tick infinite; 
-     -moz-animation: 
-    43200s linear tick infinite; }
-
-@-webkit-keyframes tick{
-  to{
-    -webkit-transform: rotate(360deg);
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-#-moz-keyframes tick{
-  to{
-   -moz-transform: rotate(360deg);
-  }
+body {
+  height: 100vh;
+  background: #5684A0;
+}
+.position {
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  inset: 0.5em;
+  margin: auto;
+}
+.bigbox {
+  position: fixed;
+  width: 30rem;
+}
+.clock-ctn {
+  background: darkblue;
+  width: 90%;
+  border-radius: 50%;
+  box-shadow: 0em 1em 6em 0em #000000a3;
+}
+/*.clock-ctn::before {
+  content: "";
+  width: 94%;
+  aspect-ratio: inherit;
+  position: inherit;
+  inset: inherit;
+  margin: inherit;
+  border: 2px solid #FF5733;
+  border-radius: 50%;
+  background: transparent;
+}*/
+.markers {
+  width: 2%;
+  aspect-ratio: 1 / 45;
+  border-radius: 30%;
+  background: #ffffff90;
+}
+.cardinal {
+  background: #FF5733;
+  width: 4%;
+  aspect-ratio: 2 / 45;
+}
+#m-3-9 {
+  transform: rotate(90deg);
+}
+#m-1-7 {
+  transform: rotate(30deg);
+}
+#m-2-8 {
+  transform: rotate(60deg);
+}
+#m-4-10 {
+  transform: rotate(-30deg);
+}
+#m-5-11 {
+  transform: rotate(-60deg);
+}
+.clock-face {
+  background: darkblue;
+  width: 75%;
+  border-radius: 50%;
+}
+.clock-hand {
+  border-radius: 2em;
+  background: linear-gradient(#FF5733 50%, transparent 50%);
+}
+.hour {
+  width: 3%;
+  aspect-ratio: 1 / 25;
+}
+.minute {
+  width: 2%;
+  aspect-ratio: 1 / 45;
+}
+.second {
+  width: .5%;
+  aspect-ratio: 1 / 192;
+  background: linear-gradient(red 50%, transparent 50%);
+}
+.dot {
+  width: 7%;
+  border-radius: 50%;
+  background: #fff;
+}
+p {
+  color: darkblue;
+  font-size: 1rem;
+  text-align: center;
+  width: 70%;
+  position: absolute;
+  bottom: 11%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.ref {
+  font-size: 0.7em;
+  bottom: 4%;
+  color: #ffffff89;
+}
+a {
+  text-decoration: .1em darkblue underline;
+  color: darkblue;
 }
   </style>
 </head>
 <body>
-  <div class="clock">
-    <div class="sec"></div>
-    <div class="mns"></div>
-    <div class="hrs"></div>
+  <!-- TOGGLE THE DESKTOP MODE ON YOUR ANDROID! -->
+<!-- TOGGLE THE DESKTOP MODE ON YOUR ANDROID! -->
+<!-- TOGGLE THE DESKTOP MODE ON YOUR ANDROID! -->
+<!-- TOGGLE THE DESKTOP MODE ON YOUR ANDROID! -->
+<!-- TOGGLE THE DESKTOP MODE ON YOUR ANDROID! -->
+
+<div class="bigbox position">
+  <div class="clock-ctn position">
+    <div class="markers position cardinal" id="m-12-6"></div>
+    <div class="markers position" id="m-1-7"></div>
+    <div class="markers position" id="m-2-8"></div>
+    <div class="markers position cardinal" id="m-3-9"></div>
+    <div class="markers position" id="m-4-10"></div>
+    <div class="markers position" id="m-5-11"></div>
+    <div class="clock-face position">
+      <div class="clock-hand position hour"></div>
+      <div class="clock-hand position minute"></div>
+      <div class="clock-hand position second"></div>
+      <div class="dot position"></div>
+    </div>
+  </div>
 </div>
 </body>
+<script>
+  var date = new Date();
+var currentHour = date.getHours();
+var currentMinute = date.getMinutes();
+var currentSecond = date.getSeconds();
+var secondHand = document.querySelector(".second");
+var minuteHand = document.querySelector(".minute");
+var hourHand = document.querySelector(".hour");
+var x = currentSecond * 6;
+var y = currentMinute * 6 + ((6/60)*currentSecond);
+var z = currentHour * 30 + ((30/60)*currentMinute + (((30/60)/60)*currentSecond));
+// 'x' is the degree value of the secondHand 'Transform[Rotate]'
+// 'y' is the degree value of the minuteHand 'Transform[Rotate]'
+// 'z' is the degree value of the hourHand 'Transform[Rotate]'
+setInterval(function () {
+  x += 6/100;
+  y += (6/100/60);
+  z += (6/100/60/12);
+  secondHand.style.transform = "rotate(" + x + "deg)";
+  minuteHand.style.transform = "rotate(" + y + "deg)";
+  hourHand.style.transform = "rotate(" + z + "deg)";
+}, 10);
+window.addEventListener("focus", function () {
+  window.location.reload();
+});
+</script>
 </html>
